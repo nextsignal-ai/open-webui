@@ -78,8 +78,8 @@ for source in log_sources:
 log.setLevel(SRC_LOG_LEVELS["CONFIG"])
 
 WEBUI_NAME = os.environ.get("WEBUI_NAME", "Open WebUI")
-if WEBUI_NAME != "Open WebUI":
-    WEBUI_NAME += " (Open WebUI)"
+# if WEBUI_NAME != "Open WebUI":
+#     WEBUI_NAME += " (Open WebUI)"
 
 WEBUI_URL = os.environ.get("WEBUI_URL", "http://localhost:3000")
 
@@ -508,7 +508,7 @@ if CUSTOM_NAME:
                         r.raw.decode_content = True
                         shutil.copyfileobj(r.raw, f)
 
-            WEBUI_NAME = data["name"]
+            # WEBUI_NAME = data["name"]
     except Exception as e:
         log.exception(e)
         pass
@@ -870,7 +870,7 @@ SEARCH_QUERY_GENERATION_PROMPT_TEMPLATE = PersistentConfig(
     os.environ.get(
         "SEARCH_QUERY_GENERATION_PROMPT_TEMPLATE",
         """You are tasked with generating web search queries. Give me an appropriate query to answer my question for google search. Answer with only the query. Today is {{CURRENT_DATE}}.
-        
+
 Question:
 {{prompt:end:4000}}""",
     ),
